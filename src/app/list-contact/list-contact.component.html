@@ -2,10 +2,10 @@
   <div class="row">
     <div class="flex-row">
       <label for="">Search</label>
-      <input type="text" class="search-box">
+      <input type="text" class="search-box" [(ngModel)]="searchText">
     </div>
-    <!-- <button (click)="addContact()">Add Contact</button> -->
   </div>
+  <br />
   <div class="row">
     <table class="table table-striped">
       <thead>
@@ -13,7 +13,7 @@
         <th>Last Name</th>
       </thead>
       <tbody>
-        <tr *ngFor="let contact of contacts | async">
+        <tr *ngFor="let contact of contacts | filter: searchText">
           <td>{{contact.firstName}}</td>
           <td>{{contact.lastName}}</td>
           <td>

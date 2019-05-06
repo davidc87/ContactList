@@ -11,6 +11,15 @@ export function ContactReducer(state: IContact[] = [], action): IContact[] {
             return state;
         }
         case ContactTypeActions.EDIT_CONTACT: {
+            const id = action.payload.id;
+            const contact = action.payload.value;
+            state.map(c => {
+                if (c.id == id) {
+                    c.firstName = contact.firstName;
+                    c.lastName = contact.lastName;
+                    c.phoneNumber = contact.phoneNumber;
+                }
+            });
             return state;
         }
     }

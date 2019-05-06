@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'edit-contact',
+    path: 'edit-contact/:id',
     component: EditContactComponent
   }
 ];

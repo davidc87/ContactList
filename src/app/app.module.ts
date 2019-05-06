@@ -1,4 +1,5 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './fitler.pipe';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,12 +18,14 @@ import { HomeComponent } from './home/home.component';
     AddContactComponent,
     ListContactComponent,
     EditContactComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     StoreModule.forRoot({
       contacts: ContactReducer
     })

@@ -1,9 +1,9 @@
 import { AppState, IContact } from './../store/contact.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { RemoveContact } from '../store/contact.action';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-list-contact',
@@ -12,12 +12,16 @@ import { Router } from '@angular/router';
 })
 export class ListContactComponent implements OnInit {
 
-  contacts: Observable<any>;
+  contacts: any;
   isEdit: boolean;
-  constructor(private store: Store<AppState>, private router: Router) { }
+  constructor(private store: Store<AppState>, private router: Router,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.contacts = this.store.select('contacts');
+    this.store.select('contacts').subscribe(data => {
+      this.contacts = data;
+      this.cdr.detectChanges();
+    })
   }
 
   addContact() {
@@ -29,6 +33,6 @@ export class ListContactComponent implements OnInit {
   }
 
   editContact(id) {
-    this.router.navigate(['/edit-contact']);
+    this.router.navigate(['/edit-contact', id]);
   }
 }

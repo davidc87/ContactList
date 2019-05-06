@@ -24,7 +24,7 @@ export class AddContactComponent implements OnInit {
 
   onAddContact() {
     this.store.dispatch(new AddContact({
-      id: Math.random(),
+      id: Math.floor(Math.random() * (1000 - 0 + 1)),
       firstName: this.addForm.controls.firstName.value,
       lastName: this.addForm.controls.lastName.value
     }));
