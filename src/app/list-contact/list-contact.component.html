@@ -1,0 +1,29 @@
+<div class="container list-contact">
+  <div class="row">
+    <div class="flex-row">
+      <label for="">Search</label>
+      <input type="text" class="search-box">
+    </div>
+    <!-- <button (click)="addContact()">Add Contact</button> -->
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts | async">
+          <td>{{contact.firstName}}</td>
+          <td>{{contact.lastName}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="editContact(contact.id)">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteContact(contact)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
